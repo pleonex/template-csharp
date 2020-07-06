@@ -1,0 +1,11 @@
+- name: Home
+  href: index.md
+
+- name: Guides
+  href: guides/
+
+- name: API
+  href: api/
+
+- name: Project
+  href: https://dev.azure.com/benito356/NetDevOpsTest

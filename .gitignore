@@ -1,0 +1,16 @@
+# Build outputs
+obj/
+bin/
+artifacts/
+
+# Build system
+tools/*
+!/tools/packages.config
+
+# Test results
+test_results/
+
+# Documentation output
+docs/_site
+docs/api
+docs/_site_pdf
