@@ -1,0 +1,33 @@
+<Project>
+    <PropertyGroup>
+        <Product>PleOps</Product>
+        <Authors>pleonex</Authors>
+        <Company>None</Company>
+        <Copyright>Copyright (C) 2020 Benito Palacios Sánchez</Copyright>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://dev.azure.com/benito356/NetDevOpsTest</PackageProjectUrl>
+        <RepositoryUrl>https://dev.azure.com/benito356/_git/ExampleProject</RepositoryUrl>
+        <PackageReleaseNotes>TODO</PackageReleaseNotes>
+        <PackageIcon>icon.png</PackageIcon>
+        <PackageTags>netcore;csharp;devops;pipeline;azure-devops</PackageTags>
+
+        <!-- Deterministic and source link -->
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    </PropertyGroup>
+
+    <!-- Deterministic and source link -->
+    <PropertyGroup Condition="'$(TF_BUILD)' == 'true'">
+        <Deterministic>true</Deterministic>
+        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.AzureRepos.Git" Version="1.0.0" PrivateAssets="All"/>
+    </ItemGroup>
+</Project>

@@ -1,0 +1,19 @@
+<Project>
+    <!-- Centralize dependency management -->
+    <ItemGroup>
+        <PackageReference Update="nunit" Version="3.12.0" />
+        <PackageReference Update="NUnit3TestAdapter" Version="3.16.1" />
+        <PackageReference Update="Microsoft.NET.Test.Sdk" Version="16.6.1"/>
+        <PackageReference Update="coverlet.collector" Version="1.3.0" />
+    </ItemGroup>
+
+    <!-- Generate helper file for code coverage when using source link -->
+    <Target Name="CoverletGetPathMap"
+            DependsOnTargets="InitializeSourceRootMappedPaths"
+            Returns="@(_LocalTopLevelSourceRoot)"
+            Condition="'$(DeterministicSourcePaths)' == 'true'">
+        <ItemGroup>
+            <_LocalTopLevelSourceRoot Include="@(SourceRoot)" Condition="'%(SourceRoot.NestedRoot)' == ''"/>
+        </ItemGroup>
+    </Target>
+</Project>
