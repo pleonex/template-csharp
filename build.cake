@@ -1,3 +1,4 @@
+// #load "./../src/PleOps.Cake/targets.cake" // Debug
 #load "nuget:?package=PleOps.Cake&prerelease"
 
 Task("Define-Project")
