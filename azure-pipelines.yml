@@ -72,7 +72,7 @@ jobs:
           dotnet cake --bootstrap
         displayName: "Install build tools"
 
-      - script: ./build.sh --target=BuildTest --configuration=$(buildConfiguration)
+      - script: dotnet cake --target=BuildTest --configuration=$(buildConfiguration)
         displayName: "Build & test"
 
       - task: PublishTestResults@2
@@ -100,12 +100,8 @@ jobs:
           dotnet cake --bootstrap
         displayName: "Install build tools"
 
-      - task: PowerShell@2
+      - script: dotnet cake --target="BuildTest" --configuration=$(buildConfiguration)
         displayName: "Build & test"
-        inputs:
-          pwsh: true
-          filePath: '.\build.ps1'
-          arguments: '--target="BuildTest" --configuration=$(buildConfiguration)'
 
       - task: PublishTestResults@2
         displayName: "Publish test results"
