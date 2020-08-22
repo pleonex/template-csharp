@@ -4,8 +4,7 @@ bin/
 artifacts/
 
 # Build system
-tools/*
-!/tools/packages.config
+tools/
 
 # Test results
 test_results/
