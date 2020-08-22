@@ -3,13 +3,13 @@ trigger:
     include:
     - develop
     - refs/pull/*
-
-pool:
-  vmImage: 'windows-latest'
+  tags:
+    include:
+      - v*
 
 variables:
   buildConfiguration: 'Release'
-  netCoreSdk: '3.1.301'
+  netCoreSdk: '3.1.401'
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 'true'
   DOTNET_CLI_TELEMETRY_OPTOUT: 'true'
 
@@ -25,7 +25,12 @@ jobs:
           packageType: 'sdk'
           version: '$(netCoreSdk)'
 
-      - script: ./build.sh --target=Create-Artifacts --configuration=$(buildConfiguration) --artifacts=$(Build.ArtifactStagingDirectory)
+      - script: |
+          dotnet tool restore
+          dotnet cake --bootstrap
+        displayName: "Install build tools"
+
+      - script: dotnet cake --target=Create-Artifacts --configuration=$(buildConfiguration) --artifacts=$(Build.ArtifactStagingDirectory)
         displayName: "Build, test and create artifacts"
 
       - task: PublishTestResults@2
@@ -62,8 +67,22 @@ jobs:
           packageType: 'sdk'
           version: '$(netCoreSdk)'
 
-      - script: ./build.sh --target=Build-Test --configuration=$(buildConfiguration)
+      - script: |
+          dotnet tool restore
+          dotnet cake --bootstrap
+        displayName: "Install build tools"
+
+      - script: dotnet cake --target=BuildTest --configuration=$(buildConfiguration)
         displayName: "Build & test"
+
+      - task: PublishTestResults@2
+        displayName: "Publish test results"
+        inputs:
+          testResultsFormat: 'VSTest'
+          testResultsFiles: '*.trx'
+          searchFolder: 'test_results'
+          failTaskOnFailedTests: true
+          publishRunAttachments: false
 
   - job: 'build_win'
     displayName: "[Windows] Build & Test"
@@ -76,12 +95,22 @@ jobs:
           packageType: 'sdk'
           version: '$(netCoreSdk)'
 
-      - task: PowerShell@2
+      - script: |
+          dotnet tool restore
+          dotnet cake --bootstrap
+        displayName: "Install build tools"
+
+      - script: dotnet cake --target="BuildTest" --configuration=$(buildConfiguration)
         displayName: "Build & test"
+
+      - task: PublishTestResults@2
+        displayName: "Publish test results"
         inputs:
-          pwsh: true
-          filePath: '.\build.ps1'
-          arguments: '--target="Build-Test" --configuration=$(buildConfiguration)'
+          testResultsFormat: 'VSTest'
+          testResultsFiles: '*.trx'
+          searchFolder: 'test_results'
+          failTaskOnFailedTests: true
+          publishRunAttachments: false
 
   - job: 'preview_release'
     displayName: 'Create preview release'
@@ -90,12 +119,6 @@ jobs:
     dependsOn: ['build_win', 'build_lin', 'build_mac']
     condition: "and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/develop'))"
     steps:
-      - task: UseDotNet@2
-        displayName: "Get .NET SDK"
-        inputs:
-          packageType: 'sdk'
-          version: '$(netCoreSdk)'
-
       - task: DownloadBuildArtifacts@0
         displayName: 'Get build artifacts'
         inputs:
