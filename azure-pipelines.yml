@@ -30,7 +30,7 @@ jobs:
           dotnet cake --bootstrap
         displayName: "Install build tools"
 
-      - script: dotnet cake --target=Stage-Artifacts --configuration=$(buildConfiguration) --artifacts=$(Build.ArtifactStagingDirectory)
+      - script: dotnet cake --target=Stage-Artifacts --configuration=$(buildConfiguration) --artifacts=$(Build.ArtifactStagingDirectory) --verbosity=diagnostic
         displayName: "Build, test and stage artifacts"
 
       - task: PublishTestResults@2
@@ -72,7 +72,7 @@ jobs:
           dotnet cake --bootstrap
         displayName: "Install build tools"
 
-      - script: dotnet cake --target=BuildTest --configuration=$(buildConfiguration)
+      - script: dotnet cake --target=BuildTest --configuration=$(buildConfiguration) --verbosity=diagnostic
         displayName: "Build & test"
 
       - task: PublishTestResults@2
@@ -100,7 +100,7 @@ jobs:
           dotnet cake --bootstrap
         displayName: "Install build tools"
 
-      - script: dotnet cake --target="BuildTest" --configuration=$(buildConfiguration)
+      - script: dotnet cake --target="BuildTest" --configuration=$(buildConfiguration) --verbosity=diagnostic
         displayName: "Build & test"
 
       - task: PublishTestResults@2
