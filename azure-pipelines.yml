@@ -30,8 +30,8 @@ jobs:
           dotnet cake --bootstrap
         displayName: "Install build tools"
 
-      - script: dotnet cake --target=Create-Artifacts --configuration=$(buildConfiguration) --artifacts=$(Build.ArtifactStagingDirectory)
-        displayName: "Build, test and create artifacts"
+      - script: dotnet cake --target=Stage-Artifacts --configuration=$(buildConfiguration) --verbosity=diagnostic
+        displayName: "Build, test and stage artifacts"
 
       - task: PublishTestResults@2
         displayName: "Publish test results"
@@ -48,6 +48,18 @@ jobs:
           codeCoverageTool: 'Cobertura'
           summaryFileLocation: 'test_results/coverage/Cobertura.xml'
           failIfCoverageEmpty: true
+
+      # We copy the artifacts as we can't specify filters in the publish task
+      - task: CopyFiles@2
+        displayName: "Prepare artifacts"
+        inputs:
+          sourceFolder: 'artifacts'
+          contents: |
+            *.zip
+            *.nupkg
+            *.snupkg
+            _site/**
+          targetFolder: $(Build.ArtifactStagingDirectory)
 
       - task: PublishBuildArtifacts@1
         displayName: "Publish artifacts"
@@ -72,7 +84,7 @@ jobs:
           dotnet cake --bootstrap
         displayName: "Install build tools"
 
-      - script: dotnet cake --target=BuildTest --configuration=$(buildConfiguration)
+      - script: dotnet cake --target=BuildTest --configuration=$(buildConfiguration) --verbosity=diagnostic
         displayName: "Build & test"
 
       - task: PublishTestResults@2
@@ -100,7 +112,7 @@ jobs:
           dotnet cake --bootstrap
         displayName: "Install build tools"
 
-      - script: dotnet cake --target="BuildTest" --configuration=$(buildConfiguration)
+      - script: dotnet cake --target="BuildTest" --configuration=$(buildConfiguration) --verbosity=diagnostic
         displayName: "Build & test"
 
       - task: PublishTestResults@2
@@ -113,7 +125,7 @@ jobs:
           publishRunAttachments: false
 
   - job: 'preview_release'
-    displayName: 'Create preview release'
+    displayName: 'Publish preview release'
     pool:
       vmImage: 'ubuntu-latest'
     dependsOn: ['build_win', 'build_lin', 'build_mac']

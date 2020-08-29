@@ -1,6 +1,7 @@
 <Project>
     <!-- Centralize dependency management -->
     <ItemGroup>
+        <PackageReference Update="Yarhl" Version="3.0.0" />
         <PackageReference Update="nunit" Version="3.12.0" />
         <PackageReference Update="NUnit3TestAdapter" Version="3.16.1" />
         <PackageReference Update="Microsoft.NET.Test.Sdk" Version="16.6.1"/>
