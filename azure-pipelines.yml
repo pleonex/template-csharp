@@ -30,8 +30,8 @@ jobs:
           dotnet cake --bootstrap
         displayName: "Install build tools"
 
-      - script: dotnet cake --target=Create-Artifacts --configuration=$(buildConfiguration) --artifacts=$(Build.ArtifactStagingDirectory)
-        displayName: "Build, test and create artifacts"
+      - script: dotnet cake --target=Stage-Artifacts --configuration=$(buildConfiguration) --artifacts=$(Build.ArtifactStagingDirectory)
+        displayName: "Build, test and stage artifacts"
 
       - task: PublishTestResults@2
         displayName: "Publish test results"
@@ -113,7 +113,7 @@ jobs:
           publishRunAttachments: false
 
   - job: 'preview_release'
-    displayName: 'Create preview release'
+    displayName: 'Publish preview release'
     pool:
       vmImage: 'ubuntu-latest'
     dependsOn: ['build_win', 'build_lin', 'build_mac']
