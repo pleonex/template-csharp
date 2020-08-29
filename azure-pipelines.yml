@@ -52,14 +52,14 @@ jobs:
       # We copy the artifacts as we can't specify filters in the publish task
       - task: CopyFiles@2
         displayName: "Prepare artifacts"
-          inputs:
-            sourceFolder: 'artifacts'
-            contents: |
-              *.zip
-              *.nupkg
-              *.snupkg
-              _site/**
-            targetFolder: $(Build.ArtifactStagingDirectory)
+        inputs:
+          sourceFolder: 'artifacts'
+          contents: |
+            *.zip
+            *.nupkg
+            *.snupkg
+            _site/**
+          targetFolder: $(Build.ArtifactStagingDirectory)
 
       - task: PublishBuildArtifacts@1
         displayName: "Publish artifacts"
