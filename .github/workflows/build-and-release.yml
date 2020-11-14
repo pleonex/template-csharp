@@ -56,7 +56,7 @@ jobs:
           retention-days: 2
 
   build_sec:
-    name: "[${{ runner.os }}] Build and test"
+    name: "[${{ matrix.os }}] Build and test"
     strategy:
       matrix:
         os: [ macos-latest, windows-latest ]
