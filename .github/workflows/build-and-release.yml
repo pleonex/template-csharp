@@ -16,7 +16,7 @@ env:
 
 jobs:
   build_main:
-    name: "[Linux] Build, test and stage"
+    name: "[ubuntu-latest] Build, test and stage"
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout"

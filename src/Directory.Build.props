@@ -8,11 +8,11 @@
 
     <PropertyGroup>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageProjectUrl>https://dev.azure.com/benito356/NetDevOpsTest</PackageProjectUrl>
-        <RepositoryUrl>https://dev.azure.com/benito356/_git/ExampleProject</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/pleonex/template-csharp</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/pleonex/template-csharp</RepositoryUrl>
         <PackageReleaseNotes>TODO</PackageReleaseNotes>
         <PackageIcon>icon.png</PackageIcon>
-        <PackageTags>netcore;csharp;devops;pipeline;azure-devops</PackageTags>
+        <PackageTags>net;csharp;devops;pipeline;github</PackageTags>
 
         <!-- Deterministic and source link -->
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
@@ -23,11 +23,11 @@
     </PropertyGroup>
 
     <!-- Deterministic and source link -->
-    <PropertyGroup Condition="'$(TF_BUILD)' == 'true'">
+    <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
         <Deterministic>true</Deterministic>
         <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.SourceLink.AzureRepos.Git" Version="1.0.0" PrivateAssets="All"/>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
     </ItemGroup>
 </Project>
