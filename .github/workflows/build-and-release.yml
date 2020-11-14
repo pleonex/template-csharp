@@ -1,0 +1,131 @@
+name: Build and release
+
+on:
+  # Dev
+  workflow_dispatch:
+  pull_request:
+  push:
+    # Preview
+    branches: [ develop ]
+    # Stable
+    tags: [ "v*" ]
+
+env:
+  NET_SDK: '3.1.404'
+  BUILD_CONFIG: 'Release'
+
+jobs:
+  build_main:
+    name: "[ubuntu-latest] Build, test and stage"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # We need full history for version number
+
+      - name: "Setup .NET SDK"
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.NET_SDK }}
+
+      - name: "Install build tools"
+        run: |
+          dotnet tool restore
+          dotnet cake --bootstrap
+
+      - name: "Build, test and stage"
+        run: dotnet cake --target=Stage-Artifacts --configuration=$BUILD_CONFIG --verbosity=diagnostic
+
+      - name: "Publish test results"
+        uses: actions/upload-artifact@v2
+        with:
+          name: "Test results"
+          path: "./test_results"
+          retention-days: 1
+
+      - name: "Publish artifacts to CI"
+        uses: actions/upload-artifact@v2
+        with:
+          name: "Artifacts"
+          path: |
+            ./artifacts/*.zip
+            ./artifacts/*.nupkg
+            ./artifacts/*.snupkg
+            ./artifacts/docs.zip
+          retention-days: 2
+
+  build_sec:
+    name: "[${{ matrix.os }}] Build and test"
+    strategy:
+      matrix:
+        os: [ macos-latest, windows-latest ]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # We need full history for version number
+
+      - name: "Setup .NET SDK"
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.NET_SDK }}
+
+      - name: "Install build tools"
+        run: |
+          dotnet tool restore
+          dotnet cake --bootstrap
+
+      # No need to stage as one job can create the binaries for all platforms
+      - name: "Build and test"
+        run: dotnet cake --target=BuildTest --configuration=$BUILD_CONFIG --verbosity=diagnostic
+
+  # Preview release on push to develop only
+  preview:
+    name: "Ship preview release"
+    if: github.ref == 'refs/heads/develop'
+    needs: [ "build_main", "build_sec" ]
+    runs-on: ubuntu-latest
+    env:
+      PREVIEW_NUGET_FEED: 'https://pkgs.dev.azure.com/benito356/NetDevOpsTest/_packaging/Example-Preview/nuget/v3/index.json'
+    steps:
+      - name: "Download artifacts"
+        uses: actions/download-artifact@v2
+        with:
+          name: "Artifacts"
+          path: "./artifacts"
+
+      - name: "Setup .NET SDK"
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.NET_SDK }}
+
+      # TODO: #5 Generate release notes and update draft release
+      # TODO: #14 Generate preview doc and publish to branch
+
+      - name: "Install Azure Artifacts Credential Provider"
+        run: wget -qO- https://aka.ms/install-artifacts-credprovider.sh | bash
+
+      - name: "Publish NuGet to preview feed"
+        run: dotnet nuget push -s $PREVIEW_NUGET_FEED -k az ./artifacts/*.nupkg
+        env:
+          VSS_NUGET_EXTERNAL_FEED_ENDPOINTS: '{"endpointCredentials": [{"endpoint":"${{ env.PREVIEW_NUGET_FEED }}", "username":"", "password":"${{ secrets.NUGET_PREVIEW_TOKEN }}"}]}'
+
+  # Stable release on version tag push only
+  stable:
+    name: "Ship stable release"
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [ "build_main", "build_sec" ]
+    runs-on: ubuntu-latest
+    env:
+      STABLE_NUGET_FEED: 'TODO'
+    steps:
+      - name: "Download artifacts"
+        uses: actions/download-artifact@v2
+        with:
+          name: "Artifacts"
+          path: "./artifacts"
+
+      # TODO: #12 Create stable workflow
+      # TODO: #6 Generate multi-version doc and publish
