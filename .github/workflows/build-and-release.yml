@@ -79,7 +79,7 @@ jobs:
 
       # No need to stage as one job can create the binaries for all platforms
       - name: "Build and test"
-        run: dotnet cake --target=BuildTest --configuration=$BUILD_CONFIG --verbosity=diagnostic
+        run: dotnet cake --target=BuildTest --configuration=${{ env.BUILD_CONFIG }} --verbosity=diagnostic
 
   # Preview release on push to develop only
   preview:
@@ -108,7 +108,7 @@ jobs:
         run: wget -qO- https://aka.ms/install-artifacts-credprovider.sh | bash
 
       - name: "Publish NuGet to preview feed"
-        run: dotnet nuget push -s $PREVIEW_NUGET_FEED -k az ./artifacts/*.nupkg
+        run: dotnet nuget push -s $PREVIEW_NUGET_FEED -k az --skip-duplicate ./artifacts/*.nupkg
         env:
           VSS_NUGET_EXTERNAL_FEED_ENDPOINTS: '{"endpointCredentials": [{"endpoint":"${{ env.PREVIEW_NUGET_FEED }}", "username":"", "password":"${{ secrets.NUGET_PREVIEW_TOKEN }}"}]}'
 
