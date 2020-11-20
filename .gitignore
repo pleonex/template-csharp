@@ -13,3 +13,4 @@ test_results/
 docs/_site
 docs/api
 docs/_site_pdf
+docs/dev/Changelog.md
