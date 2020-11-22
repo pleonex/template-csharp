@@ -80,6 +80,8 @@ jobs:
       # No need to stage as one job can create the binaries for all platforms
       - name: "Build and test"
         run: dotnet cake --target=BuildTest --configuration=${{ env.BUILD_CONFIG }} --verbosity=diagnostic
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   # Preview release on push to develop only
   preview:
@@ -101,7 +103,6 @@ jobs:
         with:
           dotnet-version: ${{ env.NET_SDK }}
 
-      # TODO: #5 Generate release notes and update draft release
       # TODO: #14 Generate preview doc and publish to branch
 
       - name: "Install Azure Artifacts Credential Provider"
