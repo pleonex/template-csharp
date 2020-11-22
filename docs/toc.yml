@@ -5,7 +5,7 @@
   href: guides/
 
 - name: API
-  href: api/
+  href: dev/
 
-- name: Project
-  href: https://dev.azure.com/benito356/NetDevOpsTest
+- name: GitHub
+  href: https://github.com/pleonex/csharp-template

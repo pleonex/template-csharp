@@ -18,7 +18,7 @@
     "build": {
       "content": [
         {
-          "files": [ "api/**.yml" ]
+          "files": [ "api/**.yml", "dev/**" ]
         },
         {
           "files": [ "toc.yml", "index.md" ]
@@ -40,7 +40,9 @@
       "globalMetadataFiles": ["global_metadata.json"],
       "fileMetadataFiles": [],
       "template": [
-        "default"
+        "default",
+        "statictoc",
+        "default-widescreen"
       ],
       "postProcessors": [],
       "markdownEngineName": "markdig",

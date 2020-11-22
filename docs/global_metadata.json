@@ -1,5 +1,5 @@
 {
-    "_appTitle": ".NET DevOps Pipeline",
+    "_appTitle": "PleOps.Cake project template",
     "_appFooter": "Copyright (c) 2019 Benito Palacios Sánchez",
     "_appLogoPath": "images/logo_48.png",
     "_appFaviconPath": "images/favicon.png",
@@ -7,7 +7,7 @@
     "_enableNewTab": true,
     "_gitContribute": {
         "apiSpecFolder": "docs/apidoc",
-        "repo": "https://dev.azure.com/benito356/_git/NetDevOpsTest",
+        "repo": "https://github.com/pleonex/template-csharp",
         "branch": "develop"
     }
 }
