@@ -10,24 +10,35 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/pleonex/template-csharp</PackageProjectUrl>
         <RepositoryUrl>https://github.com/pleonex/template-csharp</RepositoryUrl>
-        <PackageReleaseNotes>TODO</PackageReleaseNotes>
         <PackageIcon>icon.png</PackageIcon>
         <PackageTags>net;csharp;devops;pipeline;github</PackageTags>
+    </PropertyGroup>
 
+    <!-- Deterministic and source link -->
+    <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
         <!-- Deterministic and source link -->
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-    </PropertyGroup>
 
-    <!-- Deterministic and source link -->
-    <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
         <Deterministic>true</Deterministic>
         <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+    </ItemGroup>
+
+    <!-- Code analyzers -->
+    <PropertyGroup>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
+        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="All"/>
+        <PackageReference Include="SonarAnalyzer.CSharp" Version="8.14.0.22654" PrivateAssets="All"/>
+        <PackageReference Include="Roslynator.Analyzers" Version="3.0.0" PrivateAssets="All"/>
     </ItemGroup>
 </Project>
