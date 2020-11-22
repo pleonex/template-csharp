@@ -36,6 +36,8 @@ jobs:
 
       - name: "Build, test and stage"
         run: dotnet cake --target=Stage-Artifacts --configuration=$BUILD_CONFIG --verbosity=diagnostic
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: "Publish test results"
         uses: actions/upload-artifact@v2
@@ -80,8 +82,6 @@ jobs:
       # No need to stage as one job can create the binaries for all platforms
       - name: "Build and test"
         run: dotnet cake --target=BuildTest --configuration=${{ env.BUILD_CONFIG }} --verbosity=diagnostic
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   # Preview release on push to develop only
   preview:
