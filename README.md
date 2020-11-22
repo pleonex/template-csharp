@@ -7,14 +7,13 @@ project.
 
 Requirements:
 
-- .NET Core 3.1 SDK
+- .NET Core 5.0 SDK
 
 Steps:
 
 ```sh
 # Run these command only the first time to get the build tools
 dotnet tool restore
-dotnet cake --bootstrap
 
 # Build, test and stage artifacts
 dotnet cake
