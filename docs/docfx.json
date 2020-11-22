@@ -40,7 +40,9 @@
       "globalMetadataFiles": ["global_metadata.json"],
       "fileMetadataFiles": [],
       "template": [
-        "default"
+        "default",
+        "statictoc",
+        "default-widescreen"
       ],
       "postProcessors": [],
       "markdownEngineName": "markdig",

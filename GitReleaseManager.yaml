@@ -26,6 +26,7 @@ close:
 issue-labels-include:
   - Breaking
   - Bug
+  - Documentation
   - Duplicate
   - Enhancement
   - Feature
@@ -38,6 +39,6 @@ issue-labels-exclude:
 
 # Overrides default pluralization and header names for specific labels.
 issue-labels-alias:
-  - name: Doc
+  - name: Documentation
     header: Documentation
     plural: Documentation
