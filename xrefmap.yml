@@ -1,0 +1,34 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: CONTRIBUTING
+  name: Contributing to the project
+  href: guides/Contributing.html
+- uid: MyLibrary
+  name: MyLibrary
+  href: api/MyLibrary.html
+  commentId: N:MyLibrary
+  fullName: MyLibrary
+  nameWithType: MyLibrary
+- uid: MyLibrary.LibVersion
+  name: LibVersion
+  href: api/MyLibrary.LibVersion.html
+  commentId: T:MyLibrary.LibVersion
+  fullName: MyLibrary.LibVersion
+  nameWithType: LibVersion
+- uid: MyLibrary.LibVersion.GetVersion
+  name: GetVersion()
+  href: api/MyLibrary.LibVersion.html#MyLibrary_LibVersion_GetVersion
+  commentId: M:MyLibrary.LibVersion.GetVersion
+  fullName: MyLibrary.LibVersion.GetVersion()
+  nameWithType: LibVersion.GetVersion()
+- uid: MyLibrary.LibVersion.GetVersion*
+  name: GetVersion
+  href: api/MyLibrary.LibVersion.html#MyLibrary_LibVersion_GetVersion_
+  commentId: Overload:MyLibrary.LibVersion.GetVersion
+  isSpec: "True"
+  fullName: MyLibrary.LibVersion.GetVersion
+  nameWithType: LibVersion.GetVersion
+- uid: README
+  name: Example .NET Project
+  href: index.html
