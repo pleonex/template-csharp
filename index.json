@@ -16,8 +16,8 @@
   },
   "dev/Changelog.html": {
     "href": "dev/Changelog.html",
-    "title": "vNext (November 22, 2020) | PleOps.Cake project template",
-    "keywords": "vNext (November 22, 2020) As part of this release we had 9 issues closed. Bugs #9 Trigger pipeline on GitHub release #4 Fix passing secret to build script Documentation #8 Update README with setup link Enhancements #7 Implement central management of NuGet package versions #6 Prepare pipeline to push artifacts #5 Add code analyzers and bump to .NET 5 #3 Support automated release notes #2 Create dev environment #1 Migrate pipieline to GitHub actions"
+    "title": "v0.3.0 (December 13, 2020) | PleOps.Cake project template",
+    "keywords": "v0.3.0 (December 13, 2020) As part of this release we had 9 issues closed. Bugs #9 Trigger pipeline on GitHub release #4 Fix passing secret to build script Documentation #8 Update README with setup link Enhancements #7 Implement central management of NuGet package versions #6 Prepare pipeline to push artifacts #5 Add code analyzers and bump to .NET 5 #3 Support automated release notes #2 Create dev environment #1 Migrate pipieline to GitHub actions"
   },
   "guides/Contributing.html": {
     "href": "guides/Contributing.html",
