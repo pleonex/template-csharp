@@ -103,6 +103,11 @@ jobs:
       # Needed only for Azure DevOps Artifacts due to its weird auth method.
       PREVIEW_NUGET_FEED: 'https://pkgs.dev.azure.com/benito356/NetDevOpsTest/_packaging/Example-Preview/nuget/v3/index.json'
     steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # We need full history for version number
+
       - name: "Download artifacts"
         uses: actions/download-artifact@v2
         with:
