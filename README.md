@@ -4,6 +4,12 @@ This project showcases how to use the
 [PleOps.Cake](https://github.com/pleonex/PleOps.Cake) pipeline with an example
 .NET project.
 
+## Setup
+
+Follow the
+[checklist in PleOps.Cake](https://github.com/pleonex/PleOps.Cake/blob/develop/docs/guides/Project%20setup.md)
+to adapt this template to your project.
+
 ## Build
 
 Requirements:
