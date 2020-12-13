@@ -11,8 +11,7 @@ on:
     tags: [ "v*" ]
 
 env:
-  NET_SDK: '5.0.100'
-  BUILD_CONFIG: 'Release'
+  NET_SDK: '5.0.101'
 
 jobs:
   build_main:
@@ -28,9 +27,7 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: ${{ env.NET_SDK }}
-
-      # Some Cake tools has a dependency with .NET Core 3.1
-      - name: "Setup .NET Core 3.1 for dependencies"
+      - name: "Setup .NET Core 3.1 for Cake dependencies"
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '3.1.404'
@@ -40,16 +37,19 @@ jobs:
           dotnet tool restore
           dotnet cake --bootstrap
 
-      - name: "Build, test and stage"
-        run: dotnet cake --target=Stage-Artifacts --configuration=$BUILD_CONFIG --verbosity=diagnostic
+      - name: "Generate release notes"
+        run: dotnet cake --target=Generate-ReleaseNotes --verbosity=diagnostic
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: "Build, test and stage"
+        run: dotnet cake --target=Stage-Artifacts --configuration=Release --verbosity=diagnostic
 
       - name: "Publish test results"
         uses: actions/upload-artifact@v2
         with:
           name: "Test results"
-          path: "./test_results"
+          path: "./artifacts/test_results"
           retention-days: 1
 
       - name: "Publish artifacts to CI"
@@ -60,7 +60,6 @@ jobs:
             ./artifacts/*.zip
             ./artifacts/*.nupkg
             ./artifacts/*.snupkg
-            ./artifacts/docs.zip
           retention-days: 2
 
   build_sec:
@@ -79,9 +78,7 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: ${{ env.NET_SDK }}
-
-      # Some Cake tools has a dependency with .NET Core 3.1
-      - name: "Setup .NET Core 3.1 for dependencies"
+      - name: "Setup .NET Core 3.1 for Cake dependencies"
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '3.1.404'
@@ -93,15 +90,17 @@ jobs:
 
       # No need to stage as one job can create the binaries for all platforms
       - name: "Build and test"
-        run: dotnet cake --target=BuildTest --configuration=${{ env.BUILD_CONFIG }} --verbosity=diagnostic
+        run: dotnet cake --target=BuildTest --configuration=Release --verbosity=diagnostic
 
   # Preview release on push to develop only
-  preview:
-    name: "Ship preview release"
-    if: github.ref == 'refs/heads/develop'
+  # Stable release on version tag push only
+  push_artifacts:
+    name: "Push artifacts"
+    if: github.ref == 'refs/heads/develop' || startsWith(github.ref, 'refs/tags/v')
     needs: [ "build_main", "build_sec" ]
     runs-on: ubuntu-latest
     env:
+      # Needed only for Azure DevOps Artifacts due to its weird auth method.
       PREVIEW_NUGET_FEED: 'https://pkgs.dev.azure.com/benito356/NetDevOpsTest/_packaging/Example-Preview/nuget/v3/index.json'
     steps:
       - name: "Download artifacts"
@@ -114,31 +113,20 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: ${{ env.NET_SDK }}
+      - name: "Setup .NET Core 3.1 for Cake dependencies"
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.404'
 
-      # TODO: #14 Generate preview doc and publish to branch
-
+      # Weird way to authenticate in Azure DevOps Artifacts
+      # Then, we need to setup VSS_NUGET_EXTERNAL_FEED_ENDPOINTS
       - name: "Install Azure Artifacts Credential Provider"
         run: wget -qO- https://aka.ms/install-artifacts-credprovider.sh | bash
 
-      - name: "Publish NuGet to preview feed"
-        run: dotnet nuget push -s $PREVIEW_NUGET_FEED -k az --skip-duplicate ./artifacts/*.nupkg
+      - name: "Publish artifacts"
+        run: dotnet cake --target=Push-Artifacts --verbosity=diagnostic
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          STABLE_NUGET_FEED_TOKEN: ${{ secrets.STABLE_NUGET_FEED_TOKEN }}
+          PREVIEW_NUGET_FEED_TOKEN: "az"  # Dummy, auth via below env var
           VSS_NUGET_EXTERNAL_FEED_ENDPOINTS: '{"endpointCredentials": [{"endpoint":"${{ env.PREVIEW_NUGET_FEED }}", "username":"", "password":"${{ secrets.NUGET_PREVIEW_TOKEN }}"}]}'
-
-  # Stable release on version tag push only
-  stable:
-    name: "Ship stable release"
-    if: startsWith(github.ref, 'refs/tags/v')
-    needs: [ "build_main", "build_sec" ]
-    runs-on: ubuntu-latest
-    env:
-      STABLE_NUGET_FEED: 'TODO'
-    steps:
-      - name: "Download artifacts"
-        uses: actions/download-artifact@v2
-        with:
-          name: "Artifacts"
-          path: "./artifacts"
-
-      # TODO: #12 Create stable workflow
-      # TODO: #6 Generate multi-version doc and publish

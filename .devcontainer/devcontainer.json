@@ -15,6 +15,7 @@
         "cake-build.cake-vscode",
         "streetsidesoftware.code-spell-checker",
         "hediet.vscode-drawio",
+        "esbenp.prettier-vscode",
         "yzhang.markdown-all-in-one",
         "davidanson.vscode-markdownlint"
     ],
