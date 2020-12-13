@@ -1,13 +1,15 @@
 # Example .NET Project
 
-This project showcases how to use the PleOps Cake pipeline with an example .NET
-project.
+This project showcases how to use the
+[PleOps.Cake](https://github.com/pleonex/PleOps.Cake) pipeline with an example
+.NET project.
 
 ## Build
 
 Requirements:
 
-- .NET Core 5.0 SDK
+- .NET 5.0 SDK
+- .NET Core 3.1 runtime
 
 Steps:
 
