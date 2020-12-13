@@ -123,6 +123,11 @@ jobs:
         with:
           dotnet-version: '3.1.404'
 
+      - name: "Install build tools"
+        run: |
+          dotnet tool restore
+          dotnet cake --bootstrap
+
       # Weird way to authenticate in Azure DevOps Artifacts
       # Then, we need to setup VSS_NUGET_EXTERNAL_FEED_ENDPOINTS
       - name: "Install Azure Artifacts Credential Provider"
