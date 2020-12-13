@@ -9,6 +9,9 @@ on:
     branches: [ develop ]
     # Stable
     tags: [ "v*" ]
+  release:
+    types:
+      - published
 
 env:
   NET_SDK: '5.0.101'
