@@ -1,5 +1,5 @@
-ARG VARIANT="3.1"
-FROM mcr.microsoft.com/vscode/devcontainers/dotnetcore:0-${VARIANT}
+# TODO #35 Support Ubuntu 20.04
+FROM mcr.microsoft.com/vscode/devcontainers/dotnetcore:0.148.1-3.1
 
 # Install .NET 5.0
 RUN apt-get update \
