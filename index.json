@@ -17,7 +17,7 @@
   "dev/Changelog.html": {
     "href": "dev/Changelog.html",
     "title": "vNext (December 15, 2020) | PleOps.Cake project template",
-    "keywords": "vNext (December 15, 2020) As part of this release we had 3 issues closed. Bug #10 Fix development environment Documentation #11 Add GitHub templates Enhancement #13 Add more VS Code task launches v0.3.0 (December 13, 2020) As part of this release we had 9 issues closed. Bugs #9 Trigger pipeline on GitHub release #4 Fix passing secret to build script Documentation #8 Update README with setup link Enhancements #7 Implement central management of NuGet package versions #6 Prepare pipeline to push artifacts #5 Add code analyzers and bump to .NET 5 #3 Support automated release notes #2 Create dev environment #1 Migrate pipieline to GitHub actions"
+    "keywords": "vNext (December 15, 2020) As part of this release we had 4 issues closed. Bug #10 Fix development environment Documentation #11 Add GitHub templates Enhancements #14 Upgrade to latest Cake 1.0-rc2 #13 Add more VS Code task launches v0.3.0 (December 13, 2020) As part of this release we had 9 issues closed. Bugs #9 Trigger pipeline on GitHub release #4 Fix passing secret to build script Documentation #8 Update README with setup link Enhancements #7 Implement central management of NuGet package versions #6 Prepare pipeline to push artifacts #5 Add code analyzers and bump to .NET 5 #3 Support automated release notes #2 Create dev environment #1 Migrate pipieline to GitHub actions"
   },
   "guides/Contributing.html": {
     "href": "guides/Contributing.html",
