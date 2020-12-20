@@ -7,7 +7,7 @@
   "api/MyLibrary.LibVersion.html": {
     "href": "api/MyLibrary.LibVersion.html",
     "title": "Class LibVersion | PleOps.Cake project template",
-    "keywords": "Class LibVersion Version of the library. Inheritance Object LibVersion Namespace : MyLibrary Assembly : MyLibrary.dll Syntax public static class LibVersion : object Methods | Improve this Doc View Source GetVersion() Gets the version of the library. Declaration public static string GetVersion() Returns Type Description String The version of the library."
+    "keywords": "Class LibVersion Version of the library. Inheritance System.Object LibVersion Namespace : MyLibrary Assembly : MyLibrary.dll Syntax public static class LibVersion : object Methods | Improve this Doc View Source GetVersion() Gets the version of the library. Declaration public static string GetVersion() Returns Type Description System.String The version of the library."
   },
   "CONTRIBUTING.html": {
     "href": "CONTRIBUTING.html",
@@ -17,7 +17,7 @@
   "dev/Changelog.html": {
     "href": "dev/Changelog.html",
     "title": "vNext (December 15, 2020) | PleOps.Cake project template",
-    "keywords": "vNext (December 15, 2020) As part of this release we had 4 issues closed. Bug #10 Fix development environment Documentation #11 Add GitHub templates Enhancements #14 Upgrade to latest Cake 1.0-rc2 #13 Add more VS Code task launches v0.3.0 (December 13, 2020) As part of this release we had 9 issues closed. Bugs #9 Trigger pipeline on GitHub release #4 Fix passing secret to build script Documentation #8 Update README with setup link Enhancements #7 Implement central management of NuGet package versions #6 Prepare pipeline to push artifacts #5 Add code analyzers and bump to .NET 5 #3 Support automated release notes #2 Create dev environment #1 Migrate pipieline to GitHub actions"
+    "keywords": "vNext (December 15, 2020) As part of this release we had 5 issues closed. Bugs #15 Set C# formatter and fix C# brace style configuration #10 Fix development environment Documentation #11 Add GitHub templates Enhancements #14 Upgrade to latest Cake 1.0-rc2 #13 Add more VS Code task launches v0.3.0 (December 13, 2020) As part of this release we had 9 issues closed. Bugs #9 Trigger pipeline on GitHub release #4 Fix passing secret to build script Documentation #8 Update README with setup link Enhancements #7 Implement central management of NuGet package versions #6 Prepare pipeline to push artifacts #5 Add code analyzers and bump to .NET 5 #3 Support automated release notes #2 Create dev environment #1 Migrate pipieline to GitHub actions"
   },
   "guides/Contributing.html": {
     "href": "guides/Contributing.html",
