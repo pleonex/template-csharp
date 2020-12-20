@@ -36,9 +36,7 @@ jobs:
           dotnet-version: '3.1.404'
 
       - name: "Install build tools"
-        run: |
-          dotnet tool restore
-          dotnet cake --bootstrap
+        run: dotnet tool restore
 
       - name: "Generate release notes"
         run: dotnet cake --target=Generate-ReleaseNotes --verbosity=diagnostic
@@ -87,9 +85,7 @@ jobs:
           dotnet-version: '3.1.404'
 
       - name: "Install build tools"
-        run: |
-          dotnet tool restore
-          dotnet cake --bootstrap
+        run: dotnet tool restore
 
       # No need to stage as one job can create the binaries for all platforms
       - name: "Build and test"
@@ -127,9 +123,7 @@ jobs:
           dotnet-version: '3.1.404'
 
       - name: "Install build tools"
-        run: |
-          dotnet tool restore
-          dotnet cake --bootstrap
+        run: dotnet tool restore
 
       # Weird way to authenticate in Azure DevOps Artifacts
       # Then, we need to setup VSS_NUGET_EXTERNAL_FEED_ENDPOINTS
