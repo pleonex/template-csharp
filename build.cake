@@ -6,7 +6,7 @@ Task("Define-Project")
     .Does<BuildInfo>(info =>
 {
     info.AddLibraryProjects("MyLibrary");
-    info.AddApplicationProjects("MyConsole");
+    info.AddApplicationProjects("src/MyConsole/MyConsole.csproj");
     info.AddTestProjects("MyTests");
 
     // No need to set if you want to use nuget.org
