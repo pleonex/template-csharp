@@ -1,4 +1,4 @@
-// #load "./../PleOps.Cake/src/PleOps.Cake/targets.cake"
+// Remember to fix a version with "&version=x.y.z"
 #load "nuget:?package=PleOps.Cake&prerelease"
 
 Task("Define-Project")
