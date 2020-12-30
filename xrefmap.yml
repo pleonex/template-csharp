@@ -30,5 +30,5 @@ references:
   fullName: MyLibrary.LibVersion.GetVersion
   nameWithType: LibVersion.GetVersion
 - uid: README
-  name: Example .NET Project
+  name: '.NET Project template  '
   href: index.html

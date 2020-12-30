@@ -16,8 +16,8 @@
   },
   "dev/Changelog.html": {
     "href": "dev/Changelog.html",
-    "title": "v0.4.0 (December 23, 2020) | PleOps.Cake project template",
-    "keywords": "v0.4.0 (December 23, 2020) As part of this release we had 7 issues closed. Bugs #16 Fix style rules in .editorconfig #15 Set C# formatter and fix C# brace style configuration #10 Fix development environment Documentation #11 Add GitHub templates Enhancements #17 Showcase how to specify project paths #14 Upgrade to latest Cake 1.0-rc2 #13 Add more VS Code task launches v0.3.0 (December 13, 2020) As part of this release we had 9 issues closed. Bugs #9 Trigger pipeline on GitHub release #4 Fix passing secret to build script Documentation #8 Update README with setup link Enhancements #7 Implement central management of NuGet package versions #6 Prepare pipeline to push artifacts #5 Add code analyzers and bump to .NET 5 #3 Support automated release notes #2 Create dev environment #1 Migrate pipieline to GitHub actions"
+    "title": "vNext (December 30, 2020) | PleOps.Cake project template",
+    "keywords": "vNext (December 30, 2020) As part of this release we had 1 issue closed. Enhancement #18 Move test setting file to src directory v0.4.0 (December 23, 2020) As part of this release we had 7 issues closed. Bugs #16 Fix style rules in .editorconfig #15 Set C# formatter and fix C# brace style configuration #10 Fix development environment Documentation #11 Add GitHub templates Enhancements #17 Showcase how to specify project paths #14 Upgrade to latest Cake 1.0-rc2 #13 Add more VS Code task launches v0.3.0 (December 13, 2020) As part of this release we had 9 issues closed. Bugs #9 Trigger pipeline on GitHub release #4 Fix passing secret to build script Documentation #8 Update README with setup link Enhancements #7 Implement central management of NuGet package versions #6 Prepare pipeline to push artifacts #5 Add code analyzers and bump to .NET 5 #3 Support automated release notes #2 Create dev environment #1 Migrate pipieline to GitHub actions"
   },
   "guides/Contributing.html": {
     "href": "guides/Contributing.html",
@@ -31,12 +31,12 @@
   },
   "index.html": {
     "href": "index.html",
-    "title": "Example .NET Project | PleOps.Cake project template",
-    "keywords": "Example .NET Project This project showcases how to use the PleOps.Cake pipeline with an example .NET project. Setup Follow the checklist in PleOps.Cake to adapt this template to your project. Build Requirements: .NET 5.0 SDK .NET Core 3.1 runtime Steps: # Run these command only the first time to get the build tools dotnet tool restore # Build, test and stage artifacts dotnet cake # Just for building and testing dotnet cake --target=BuildTest"
+    "title": ".NET Project template | PleOps.Cake project template",
+    "keywords": ".NET Project template This is a template repository for .NET projects. It uses the build system and DevOps pipeline PleOps.Cake . <!-- prettier-ignore --> Release Package Stable Preview Azure Artifacts Setup Follow the checklist in PleOps.Cake to adapt this template to your project. Documentation Feel free to ask any question in the project Discussion site! Check our on-line documentation . Build The project requires to build .NET 5.0 SDK and .NET Core 3.1 runtime. If you open the project with VS Code and you did install the VS Code Remote Containers extension, you can have an already pre-configured development environment with Docker or Podman. To build, test and generate artifacts run: # Only required the first time dotnet tool restore # Default target is Stage-Artifacts dotnet cake To just build and test quickly, run: dotnet cake --target=BuildTest"
   },
   "README.html": {
     "href": "README.html",
-    "title": "Example .NET Project | PleOps.Cake project template",
-    "keywords": "Example .NET Project This project showcases how to use the PleOps.Cake pipeline with an example .NET project. Setup Follow the checklist in PleOps.Cake to adapt this template to your project. Build Requirements: .NET 5.0 SDK .NET Core 3.1 runtime Steps: # Run these command only the first time to get the build tools dotnet tool restore # Build, test and stage artifacts dotnet cake # Just for building and testing dotnet cake --target=BuildTest"
+    "title": ".NET Project template | PleOps.Cake project template",
+    "keywords": ".NET Project template This is a template repository for .NET projects. It uses the build system and DevOps pipeline PleOps.Cake . <!-- prettier-ignore --> Release Package Stable Preview Azure Artifacts Setup Follow the checklist in PleOps.Cake to adapt this template to your project. Documentation Feel free to ask any question in the project Discussion site! Check our on-line documentation . Build The project requires to build .NET 5.0 SDK and .NET Core 3.1 runtime. If you open the project with VS Code and you did install the VS Code Remote Containers extension, you can have an already pre-configured development environment with Docker or Podman. To build, test and generate artifacts run: # Only required the first time dotnet tool restore # Default target is Stage-Artifacts dotnet cake To just build and test quickly, run: dotnet cake --target=BuildTest"
   }
 }
