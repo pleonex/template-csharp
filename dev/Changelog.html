@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>vNext (December 30, 2020) | PleOps.Cake project template </title>
+    <title>v0.4.1 (March 13, 2021) | PleOps.Cake project template </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="vNext (December 30, 2020) | PleOps.Cake project template ">
+    <meta name="title" content="v0.4.1 (March 13, 2021) | PleOps.Cake project template ">
     <meta name="generator" content="docfx 2.56.7.0">
     
     <link rel="shortcut icon" href="../images/favicon.png">
@@ -121,9 +121,16 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h2 id="vnext-december-30-2020">vNext (December 30, 2020)</h2>
+<h2 id="v041-march-13-2021">v0.4.1 (March 13, 2021)</h2>
 
-<p>As part of this release we had <a href="https://github.com/pleonex/template-csharp/milestone/3?closed=1">2 issues</a> closed.</p>
+<p>As part of this release we had <a href="https://github.com/pleonex/template-csharp/milestone/3?closed=1">2 issues</a> closed.
+It introduces compatibility with Ubuntu 20.04 (LTS) which is the new image in Azure and GitHub build pipelines.</p>
+<p>Migration steps:</p>
+<ul>
+<li>Upgrade Cake to version 1.1.0 by running: <code>dotnet tool update cake.tool</code>.</li>
+<li>Update the dockerfile for the dev container (<a href="https://github.com/pleonex/template-csharp/blob/f1645ef92d432a1de90c1f507123a5016c83f761/.devcontainer/Dockerfile"><em>.devcontainer/Dockerfile</em></a>) to use the official .NET 5 image.</li>
+<li>Update your GitHub workflow (<a href="https://github.com/pleonex/template-csharp/blob/f1645ef92d432a1de90c1f507123a5016c83f761/.github/workflows/build-and-release.yml"><em>.github/workflows/build-and-release.yml</em></a>) to use the latest .NET SDK.</li>
+</ul>
 <p><strong>Enhancements</strong></p>
 <ul>
 <li><a href="https://github.com/pleonex/template-csharp/pull/19"><strong>#19</strong></a> Upgrade for Ubuntu 20.04 dev container</li>

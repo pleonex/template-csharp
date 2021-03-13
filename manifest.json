@@ -42,7 +42,7 @@
       "output": {
         ".html": {
           "relative_path": "api/MyLibrary.LibVersion.html",
-          "hash": "/spkTbBOufdT0i0evXs4TA=="
+          "hash": "ix1s6HhJjv+x3hIgF3u5jQ=="
         }
       },
       "is_incremental": false,
@@ -66,7 +66,7 @@
       "output": {
         ".html": {
           "relative_path": "dev/Changelog.html",
-          "hash": "q6Yl9FZgBNAkvn+qm2UE7g=="
+          "hash": "fZaHHdQInSGomZZVQ4lazQ=="
         }
       },
       "is_incremental": false,
