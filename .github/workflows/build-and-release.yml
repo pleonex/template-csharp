@@ -14,7 +14,7 @@ on:
       - published
 
 env:
-  NET_SDK: '5.0.301'
+  NET_SDK: '5.0.300'
   NET31_SDK: '3.1.410'
 
 jobs:
