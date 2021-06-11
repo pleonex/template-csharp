@@ -8,6 +8,6 @@
     "_gitContribute": {
         "apiSpecFolder": "docs/apidoc",
         "repo": "https://github.com/pleonex/template-csharp",
-        "branch": "develop"
+        "branch": "main"
     }
 }
