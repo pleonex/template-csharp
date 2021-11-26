@@ -24,9 +24,8 @@ Check our on-line [documentation](https://www.pleonex.dev/PleOps.Cake/).
 
 ## Build
 
-The project requires to build .NET 5 SDK and .NET Core 3.1 runtime (Linux and
-MacOS require also Mono). If you open the project with VS Code and you did
-install the
+The project requires to build .NET 6.0 SDK (Linux and MacOS require also Mono).
+If you open the project with VS Code and you did install the
 [VS Code Remote Containers](https://code.visualstudio.com/docs/remote/containers)
 extension, you can have an already pre-configured development environment with
 Docker or Podman.

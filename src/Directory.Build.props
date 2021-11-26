@@ -6,6 +6,11 @@
         <Copyright>Copyright (C) 2020 Benito Palacios Sánchez</Copyright>
 
         <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+
+        <!-- Due to known issues, .NET 6 SDK may give a false warning
+             when packing apps if the SelfContained value is in the csproj
+             instead in the CLI command. -->
+        <NoWarn>NETSDK1179</NoWarn>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -14,6 +19,7 @@
         <RepositoryUrl>https://github.com/pleonex/template-csharp</RepositoryUrl>
         <PackageIcon>icon.png</PackageIcon>
         <PackageTags>net;csharp;devops;pipeline;github</PackageTags>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <!-- Deterministic and source link -->
