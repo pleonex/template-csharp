@@ -4,7 +4,7 @@
         "src": [
           {
             "files": [
-              "MyLibrary/MyLibrary.csproj"
+              "MyLibrary/bin/**/MyLibrary.dll"
             ],
             "src": "../src"
           }
