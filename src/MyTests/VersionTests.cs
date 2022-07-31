@@ -22,6 +22,7 @@ using NUnit.Framework;
 
 namespace MyTests
 {
+    [TestFixture]
     public class VersionTests
     {
         [Test]
