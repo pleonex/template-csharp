@@ -4,14 +4,14 @@
         <PackageVersion Include="Yarhl" Version="3.1.0" />
 
         <PackageVersion Include="nunit" Version="3.13.3" />
-        <PackageVersion Include="NUnit3TestAdapter" Version="4.2.1" />
-        <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.2.0"/>
-        <PackageVersion Include="coverlet.collector" Version="3.1.2" />
+        <PackageVersion Include="NUnit3TestAdapter" Version="4.4.2" />
+        <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.5.0"/>
+        <PackageVersion Include="coverlet.collector" Version="3.2.0" />
 
         <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="1.1.1" />
 
         <PackageVersion Include="StyleCop.Analyzers" Version="1.1.118" />
-        <PackageVersion Include="SonarAnalyzer.CSharp" Version="8.42.0.51121" />
-        <PackageVersion Include="Roslynator.Analyzers" Version="4.1.1" />
+        <PackageVersion Include="SonarAnalyzer.CSharp" Version="8.53.0.62665" />
+        <PackageVersion Include="Roslynator.Analyzers" Version="4.2.0" />
     </ItemGroup>
 </Project>
