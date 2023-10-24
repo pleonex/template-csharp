@@ -12,5 +12,4 @@
         "editor.defaultFormatter": "ms-dotnettools.csharp",
         "editor.formatOnType": true
     },
-    "prettier.proseWrap": "always",
 }

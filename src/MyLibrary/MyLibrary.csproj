@@ -1,7 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <Description>My custom public library.</Description>
+    <IsPackable>true</IsPackable>
+
     <TargetFrameworks>net6.0</TargetFrameworks>
+
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!-- TODO: Just to showcase a package reference, you can remove it. -->
     <PackageReference Include="Yarhl" />
   </ItemGroup>
 

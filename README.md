@@ -1,7 +1,14 @@
-# .NET Project template [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://choosealicense.com/licenses/mit/) ![Build and release](https://github.com/pleonex/template-csharp/workflows/Build%20and%20release/badge.svg)
+# .NET project template [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://choosealicense.com/licenses/mit/) ![Build and release](https://github.com/pleonex/template-csharp/workflows/Build%20and%20release/badge.svg)
 
 This is a template repository for .NET projects. It uses the build system and
-DevOps pipeline [PleOps.Cake](https://github.com/pleonex/PleOps.Cake).
+DevOps workflow of [PleOps.Cake](https://github.com/pleonex/PleOps.Cake).
+
+Tech stack:
+
+- Projects: C# / .NET
+- Documentation: DocFX, GitHub page
+- CI: GitHub Actions
+- Release publication: NuGet feeds, GitHub
 
 <!-- prettier-ignore -->
 | Release | Package                                                           |
@@ -12,7 +19,7 @@ DevOps pipeline [PleOps.Cake](https://github.com/pleonex/PleOps.Cake).
 ## Setup
 
 Follow the
-[checklist in PleOps.Cake](https://github.com/pleonex/PleOps.Cake/blob/develop/docs/guides/Project%20setup.md)
+[checklist in PleOps.Cake](https://www.pleonex.dev/PleOps.Cake/docs/getting-started/project-setup.html)
 to adapt this template to your project.
 
 ## Documentation
@@ -20,28 +27,22 @@ to adapt this template to your project.
 Feel free to ask any question in the
 [project Discussion site!](https://github.com/pleonex/template-csharp/discussions)
 
-Check our on-line [documentation](https://www.pleonex.dev/PleOps.Cake/).
+Check the [documentation](https://www.pleonex.dev/PleOps.Cake/) for more
+information.
 
 ## Build
 
-The project requires to build .NET 6.0 SDK (Linux and MacOS require also Mono).
-If you open the project with VS Code and you did install the
-[VS Code Remote Containers](https://code.visualstudio.com/docs/remote/containers)
-extension, you can have an already pre-configured development environment with
-Docker or Podman.
+The project requires to build .NET 6.0 SDK.
 
 To build, test and generate artifacts run:
 
 ```sh
-# Only required the first time
-dotnet tool restore
-
-# Default target is Stage-Artifacts
-dotnet cake
+dotnet run --project build/orchestrator -- --target=CI-Build
 ```
 
-To just build and test quickly, run:
+For a quick build use the `Default` target or skip the `target` argument.
 
-```sh
-dotnet cake --target=BuildTest
-```
+## Release
+
+Create a new GitHub release with a tag `v{Version}` (e.g. `v2.4`) and that's it!
+This triggers a pipeline that builds and deploy the project.
