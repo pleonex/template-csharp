@@ -14,7 +14,7 @@ on:
       - published
 
 env:
-  NET_SDK: '6.0.415'
+  NET_SDK: '6.0.416'
 
 jobs:
   build_main:
@@ -116,7 +116,7 @@ jobs:
       - name: "Deploy artifacts"
         run: dotnet run --project build/orchestrator -- --target=CI-Deploy
         env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           STABLE_NUGET_FEED_TOKEN: ${{ secrets.STABLE_NUGET_FEED_TOKEN }}
           PREVIEW_NUGET_FEED_TOKEN: "az"  # Dummy, auth via below env var
           VSS_NUGET_EXTERNAL_FEED_ENDPOINTS: '{"endpointCredentials": [{"endpoint":"${{ env.PREVIEW_NUGET_FEED }}", "username":"", "password":"${{ secrets.NUGET_PREVIEW_TOKEN }}"}]}'
