@@ -1,9 +1,20 @@
-### Description
+TODO: description of the PR work.
 
-A clear and concise description of what the bug or feature is.
+- [ ] Related code has been tested automatically or manually
+- [ ] Related documentation is updated
+- [ ] I acknowledge I have read and filled this checklist and accept the
+      [developer certificate of origin](https://developercertificate.org/)
+
+This PR closes #
+
+## Acceptance criteria
+
+TODO: list of expectations it has passed from the related issue.
+
+### Follow-up work
+
+TODO: describe any missing or future required work.
 
 ### Example
 
-Small example with the bug fixes or how to use the new API / feature.
-
-This closes #
+TODO: small code-snippet or screenshot of the work
