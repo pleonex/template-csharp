@@ -5,6 +5,10 @@ Thanks for taking the time to contribute! :sparkles:
 In this document you will find all the information you need to make sure that
 the projects continues to be consistent and with great quality!
 
+> [!NOTE]  
+> By contributing in this repository you accept the
+> [developer certificate of origin](https://developercertificate.org/).
+
 ## Reporting features and issues
 
 ### Issues
@@ -22,8 +26,6 @@ Features are requested and handled as GitHub _issues_.
 If you want to ask for a new feature, first make sure it hasn't been reported
 yet by using the search box in the issue tab. Make sure that the feature aligns
 with the direction of the project.
-
-**Do not ask for tools for games or translations**.
 
 ## Pull Request
 
