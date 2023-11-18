@@ -1,0 +1,55 @@
+on:
+  workflow_call:
+    inputs:
+      agent_os:
+        required: true
+        type: string
+      net_sdk:
+        required: true
+        type: string
+      is_main_build:
+        required: true
+        type: boolean
+
+jobs:
+  build:
+    name: "Build"
+    runs-on: ${{ inputs.agent_os }}
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # We need full history for version number
+
+      - name: "Setup .NET SDK"
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ inputs.net_sdk }}
+
+      - name: "Build and test"
+        run: dotnet run --project build/orchestrator -- --target=Default --configuration=Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: ${{ !inputs.is_main_build }}
+
+      - name: "Build, test and bundle"
+        run: dotnet run --project build/orchestrator -- --target=CI-Build --configuration=Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: ${{ inputs.is_main_build }}
+
+      - name: "Publish artifacts to CI"
+        uses: actions/upload-artifact@v3
+        with:
+          name: "Artifacts"
+          retention-days: 7
+          path: |
+            build/artifacts/
+            !build/artifacts/docs
+        if: ${{ inputs.is_main_build }}
+
+      - name: Publish docs artifact to CI
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: build/artifacts/docs
+        if: ${{ inputs.is_main_build }}
