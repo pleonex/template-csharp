@@ -51,7 +51,6 @@ public sealed class DefaultTask : FrostingTask
 [IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.Dotnet.BundleNuGetsTask))]
 [IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.Dotnet.BundleApplicationsTask))]
 [IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.DocFx.BuildTask))]
-[IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.DocFx.BundleTask))]
 public sealed class BundleTask : FrostingTask
 {
 }

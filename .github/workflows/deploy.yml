@@ -3,7 +3,7 @@ name: "Deploy"
 on:
   workflow_call:
     inputs:
-      net_sdk:
+      dotnet_version:
         required: true
         type: string
       azure_nuget_feed:
@@ -19,7 +19,7 @@ on:
 
 jobs:
   upload_doc:
-    name: "Docs to GitHub Page"
+    name: "Documentation"
     runs-on: "ubuntu-latest"
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
@@ -35,7 +35,7 @@ jobs:
         uses: actions/deploy-pages@v2
 
   push_artifacts:
-    name: "Upload artifacts"
+    name: "Artifacts"
     runs-on: "ubuntu-latest"
     steps:
       - name: "Checkout"
@@ -52,7 +52,7 @@ jobs:
       - name: "Setup .NET SDK"
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: ${{ inputs.net_sdk }}
+          dotnet-version: ${{ inputs.dotnet_version }}
 
       # Weird way to authenticate in Azure DevOps Artifacts
       # Then, we need to setup VSS_NUGET_EXTERNAL_FEED_ENDPOINTS

@@ -3,7 +3,7 @@ name: "Build"
 on:
   workflow_call:
     inputs:
-      net_sdk:
+      dotnet_version:
         required: true
         type: string
 
@@ -25,7 +25,7 @@ jobs:
       - name: "Setup .NET SDK"
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: ${{ inputs.net_sdk }}
+          dotnet-version: ${{ inputs.dotnet_version }}
 
       - name: "Build and test"
         run: dotnet run --project build/orchestrator -- --target=Default --dotnet-configuration=Release
