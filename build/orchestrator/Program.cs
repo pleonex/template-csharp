@@ -38,26 +38,27 @@ public sealed class BuildLifetime : FrostingLifetime<PleOpsBuildContext>
 
 [TaskName("Default")]
 [IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.Common.SetGitVersionTask))]
+[IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.Common.CleanArtifactsTask))]
 [IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.Dotnet.BuildTask))]
 [IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.Dotnet.TestTask))]
 public sealed class DefaultTask : FrostingTask
 {
 }
 
-[TaskName("CI-Build")]
+[TaskName("Bundle")]
 [IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.Common.SetGitVersionTask))]
-[IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.Common.CleanArtifactsTask))]
 [IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.GitHub.ExportReleaseNotesTask))]
-[IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.Dotnet.DotnetTasks.PrepareProjectBundlesTask))]
-[IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.DocFx.DocFxTasks.PrepareProjectBundlesTask))]
-public sealed class CIBuildTask : FrostingTask
+[IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.Dotnet.BundleNuGetsTask))]
+[IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.Dotnet.BundleApplicationsTask))]
+[IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.DocFx.BuildTask))]
+public sealed class BundleTask : FrostingTask
 {
 }
 
-[TaskName("CI-Deploy")]
+[TaskName("Deploy")]
 [IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.Common.SetGitVersionTask))]
 [IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.Dotnet.DotnetTasks.DeployProjectTask))]
 [IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.GitHub.UploadReleaseBinariesTask))]
-public sealed class CIDeployTask : FrostingTask
+public sealed class DeployTask : FrostingTask
 {
 }
