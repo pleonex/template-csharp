@@ -1,3 +1,5 @@
+name: "Deploy"
+
 on:
   workflow_call:
     inputs:
@@ -16,10 +18,9 @@ on:
         required: false
 
 jobs:
-  deploy:
-    name: "Deploy"
+  upload_doc:
+    name: "Docs to GitHub Page"
     runs-on: "ubuntu-latest"
-
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
       pages: write      # to deploy to Pages
@@ -28,7 +29,14 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
 
+  push_artifacts:
+    name: "Upload artifacts"
+    runs-on: "ubuntu-latest"
     steps:
       - name: "Checkout"
         uses: actions/checkout@v4
@@ -58,7 +66,3 @@ jobs:
           STABLE_NUGET_FEED_TOKEN: ${{ secrets.nuget_stable_token }}
           PREVIEW_NUGET_FEED_TOKEN: ${{ secrets.nuget_preview_token }}
           VSS_NUGET_EXTERNAL_FEED_ENDPOINTS: '{"endpointCredentials": [{"endpoint":"${{ inputs.azure_nuget_feed }}", "username":"", "password":"${{ secrets.azure_nuget_token }}"}]}'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2

@@ -1,3 +1,5 @@
+name: "Build"
+
 on:
   workflow_call:
     inputs:
@@ -12,8 +14,9 @@ on:
         type: boolean
 
 jobs:
-  build:
-    name: "Build"
+  simple_build:
+    name: "${{ inputs.agent_os }}"
+    if: ${{ !inputs.is_main_build }}
     runs-on: ${{ inputs.agent_os }}
     steps:
       - name: "Checkout"
@@ -30,13 +33,26 @@ jobs:
         run: dotnet run --project build/orchestrator -- --target=Default --configuration=Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        if: ${{ !inputs.is_main_build }}
+
+  full_build:
+    name: "${{ inputs.agent_os }} (Full)"
+    if: ${{ inputs.is_main_build }}
+    runs-on: ${{ inputs.agent_os }}
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # We need full history for version number
+
+      - name: "Setup .NET SDK"
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ inputs.net_sdk }}
 
       - name: "Build, test and bundle"
         run: dotnet run --project build/orchestrator -- --target=CI-Build --configuration=Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        if: ${{ inputs.is_main_build }}
 
       - name: "Publish artifacts to CI"
         uses: actions/upload-artifact@v3
@@ -46,10 +62,8 @@ jobs:
           path: |
             build/artifacts/
             !build/artifacts/docs
-        if: ${{ inputs.is_main_build }}
 
       - name: Publish docs artifact to CI
         uses: actions/upload-pages-artifact@v2
         with:
           path: build/artifacts/docs
-        if: ${{ inputs.is_main_build }}
