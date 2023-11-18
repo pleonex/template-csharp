@@ -15,14 +15,10 @@ on:
 
 jobs:
   build:
-    strategy:
-      matrix:
-        os: [ ubuntu-latest, macos-latest, windows-latest ]
+    name: "Build"
     uses: ./.github/workflows/build.yml
     with:
-      agent_os: ${{ matrix.os }}
       net_sdk: '8.0.100'
-      is_main_build: ${{ matrix.os == 'ubuntu-latest' }}
 
   # Preview release on push to main only
   # Stable release on version tag push only

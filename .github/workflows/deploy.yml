@@ -60,7 +60,7 @@ jobs:
         run: wget -qO- https://aka.ms/install-artifacts-credprovider.sh | bash
 
       - name: "Deploy artifacts"
-        run: dotnet run --project build/orchestrator -- --target=CI-Deploy
+        run: dotnet run --project build/orchestrator -- --target=Deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           STABLE_NUGET_FEED_TOKEN: ${{ secrets.nuget_stable_token }}
