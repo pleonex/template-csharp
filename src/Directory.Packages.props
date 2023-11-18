@@ -1,15 +1,11 @@
 <Project>
     <!-- Centralize dependency management -->
     <ItemGroup>
-        <PackageVersion Include="Yarhl" Version="3.1.0" />
-
         <PackageVersion Include="nunit" Version="3.13.3" />
         <PackageVersion Include="NUnit3TestAdapter" Version="4.5.0" />
         <PackageVersion Include="NUnit.Analyzers" Version="3.8.0" />
         <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.7.2"/>
         <PackageVersion Include="coverlet.collector" Version="6.0.0" />
-
-        <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="1.1.1" />
 
         <PackageVersion Include="StyleCop.Analyzers" Version="1.1.118" />
         <PackageVersion Include="SonarAnalyzer.CSharp" Version="9.12.0.78982" />

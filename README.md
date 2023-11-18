@@ -32,7 +32,7 @@ information.
 
 ## Build
 
-The project requires to build .NET 6.0 SDK.
+The project requires to build .NET 8.0 SDK.
 
 To build, test and generate artifacts run:
 

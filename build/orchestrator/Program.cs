@@ -16,7 +16,7 @@ public sealed class BuildLifetime : FrostingLifetime<PleOpsBuildContext>
         // HERE you can set default values overridable by command-line
         // TODO EXAMPLE: context.WarningsAsErrors = false;
         context.DotNetContext.ApplicationProjects.Add(new ProjectPublicationInfo(
-            "./src/MyConsole", new[] { "win-x64", "linux-x64", "osx-x64" }, "net6.0"));
+            "./src/MyConsole", new[] { "win-x64", "linux-x64", "osx-x64" }, "net8.0"));
 
         // Update build parameters from command line arguments.
         context.ReadArguments();
