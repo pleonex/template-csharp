@@ -14,7 +14,7 @@
                 "isDefault": true
             },
             "problemMatcher": ["$msCompile"],
-            "label": "Build recipe"
+            "label": "Build"
         },
         {
             "type": "process",
@@ -24,13 +24,13 @@
             "--project",
             "build/orchestrator/",
             "--",
-            "--target=CI-Build"
+            "--target=Bundle"
             ],
             "group": {
             "kind": "build",
             },
             "problemMatcher": ["$msCompile"],
-            "label": "CI-Build recipe"
+            "label": "Bundle"
         },
     ]
 }

@@ -39,8 +39,7 @@ public sealed class BuildLifetime : FrostingLifetime<PleOpsBuildContext>
 [TaskName("Default")]
 [IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.Common.SetGitVersionTask))]
 [IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.Common.CleanArtifactsTask))]
-[IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.Dotnet.BuildTask))]
-[IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.Dotnet.TestTask))]
+[IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.Dotnet.DotnetTasks.BuildProjectTask))]
 public sealed class DefaultTask : FrostingTask
 {
 }
@@ -48,8 +47,7 @@ public sealed class DefaultTask : FrostingTask
 [TaskName("Bundle")]
 [IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.Common.SetGitVersionTask))]
 [IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.GitHub.ExportReleaseNotesTask))]
-[IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.Dotnet.BundleNuGetsTask))]
-[IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.Dotnet.BundleApplicationsTask))]
+[IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.Dotnet.DotnetTasks.BundleProjectTask))]
 [IsDependentOn(typeof(Cake.Frosting.PleOps.Recipe.DocFx.BuildTask))]
 public sealed class BundleTask : FrostingTask
 {
