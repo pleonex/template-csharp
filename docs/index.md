@@ -1,13 +1,17 @@
 # .NET project template
 
-![Build and release](https://github.com/pleonex/PleOps.Cake/workflows/Build%20and%20release/badge.svg?branch=main&event=push)
+Repository template for .NET projects with a complete DevOps workflow. It uses
+the build system and best-practices from
+[PleOps.Cake](https://www.pleonex.dev/PleOps.Cake/).
 
-This is a template repository for .NET projects. It uses the build system and
-DevOps workflow of [PleOps.Cake](https://github.com/pleonex/PleOps.Cake).
+- ♻️ DevOps best practices for a software project
+- 🔧 Build, test and release .NET projects
+- 📚 Documentation
+- 🤖 Continuous integration
 
-Tech stack:
+## Tech stack
 
-- Projects: C# / .NET
-- Documentation: DocFX, GitHub page
-- CI: GitHub Actions
-- Release publication: NuGet feeds, GitHub
+- **Projects**: C# / .NET
+- **Documentation**: DocFX, GitHub page
+- **CI**: GitHub Actions
+- **Release deployment**: NuGet feeds, GitHub

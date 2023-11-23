@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": ".NET Launch (console)",
+            "name": "Run MyConsole",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "Cake: Run Build",
+            "preLaunchTask": "Build",
             "program": "${workspaceFolder}/src/MyConsole/bin/Debug/net8.0/MyConsole.dll",
             "args": [],
             "cwd": "${workspaceFolder}",

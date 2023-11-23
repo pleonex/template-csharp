@@ -50,7 +50,6 @@
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="StyleCop.Analyzers" PrivateAssets="All"/>
     <PackageReference Include="SonarAnalyzer.CSharp" PrivateAssets="All"/>
   </ItemGroup>
 </Project>
